@@ -3,6 +3,7 @@ from fastapi import FastAPI, File, UploadFile, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from gradio_client import Client, handle_file
 from retry import retry
 from PIL import Image, ImageEnhance
@@ -12,6 +13,15 @@ from cachetools import TTLCache
 import tempfile
 
 app = FastAPI()
+
+# CORS setup to allow frontend requests
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins, adjust as needed
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allows all headers
+)
 
 # Ensure the static folder exists
 os.makedirs("static", exist_ok=True)
