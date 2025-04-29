@@ -1,7 +1,5 @@
 fastapi
 uvicorn
-gradio-client
-Pillow
-retry
-cachetools
+jinja2
+pillow
 python-dotenv
