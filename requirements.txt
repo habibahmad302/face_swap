@@ -6,3 +6,4 @@ Pillow
 retry
 cachetools
 python-dotenv
+python-multipart
